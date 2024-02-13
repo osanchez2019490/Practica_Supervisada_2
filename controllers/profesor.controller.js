@@ -3,11 +3,10 @@ const {responde} = require('express');
 const bcrypt = require('bcrypt');
 
 const profesorPost = async(req, res) => {
-    const {role, password , ...resto} = req.body;
+    const {role, password, correo, nombre } = req.body;
 
-    const profesor = new Profesor({role, password, ...resto});
+    const profesor = new Profesor({role, password, correo, nombre});
 
-    profesor.role = 'TEACHER_ROLE';
 
     const salt = bcrypt.genSaltSync();
     profesor.password = bcrypt.hashSync(password, salt);
