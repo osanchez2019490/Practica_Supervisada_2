@@ -34,6 +34,11 @@ const EstudianteSchema = Schema({
         uniqued: true
     },
 
+    jornada: {
+        type: String,
+        required: [true, 'La jornada del estudiante es obligatorio']
+    },
+
     role: {
         type: String,
         required: true,
@@ -46,3 +51,5 @@ const EstudianteSchema = Schema({
     }
 
 })
+
+module.exports = model('Estudiante', EstudianteSchema);

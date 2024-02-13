@@ -28,4 +28,4 @@ const ProfesorSchema = Schema({
     }
 });
 
-module.exports = mode('Profesor', ProfesorSchema)
+module.exports = model('Profesor', ProfesorSchema);
