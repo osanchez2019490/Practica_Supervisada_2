@@ -8,7 +8,7 @@ class Server {
         this.port = process.env.PORT;
         this.estudianteRegisterPath = '/api/estudianteRegister';
         this.profesorRegisterPath = '/api/profesorRegister';
-        this.login = '/api/login'
+        this.login = '/api/auth'
         
         this.conectarDB();
         this.middlware();

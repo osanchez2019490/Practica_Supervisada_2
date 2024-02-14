@@ -36,7 +36,9 @@ const login = async(req = request, res = response) =>{
 
         res.status(200).json({
             msg: "Bienvenido",
+            usuario,
             token
+
         })
 
         
