@@ -32,11 +32,19 @@ const existeEmailProfesor = async(correo = '') => {
     };
 };
 
+const existeEstudianteById = async (id = '') =>{
+    const existeEstudiante = await Estudiante.findOne({id});
+    if(existeEstudiante){
+        throw new Error(`El estudiante con el ${ id } no existe`)
+
+    }
+}
 
 module.exports = {
     esGradoValido,
     existeEmailEstudiante,
     esRolValido,
-    existeEmailProfesor
+    existeEmailProfesor,
+    existeEstudianteById
 
 }
