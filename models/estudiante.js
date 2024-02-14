@@ -19,7 +19,13 @@ const EstudianteSchema = Schema({
 
     materias: {
         type: String,
-        required: [true, 'El estudiante necesita materias'],
+        validate: {
+            validator: function(value){
+                return value.length <= 5;
+            },
+
+            message: 'No se pueden agregar mas de 3 materias'
+        },
     },
 
     grado: {

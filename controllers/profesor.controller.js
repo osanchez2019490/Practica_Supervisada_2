@@ -20,6 +20,8 @@ const profesorPost = async(req, res) => {
 
 }
 
+
+
 module.exports = {
     profesorPost
 }

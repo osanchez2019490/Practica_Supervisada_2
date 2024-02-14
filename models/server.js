@@ -8,7 +8,8 @@ class Server {
         this.port = process.env.PORT;
         this.estudianteRegisterPath = '/api/estudianteRegister';
         this.profesorRegisterPath = '/api/profesorRegister';
-        this.login = '/api/auth'
+        this.login = '/api/auth';
+        this.editarEstudiante = '/api/estudiante';
         
         this.conectarDB();
         this.middlware();
@@ -29,6 +30,7 @@ class Server {
         this.app.use(this.estudianteRegisterPath, require('../routers/estudianteRegister.routes'));
         this.app.use(this.profesorRegisterPath, require('../routers/profesorRegister.routes'));
         this.app.use(this.login, require('../routers/auth.routes'));
+        this.app.use(this.editarEstudiante, require('../routers/estudiante.routes'));
     }
 
     listen(){
