@@ -15,12 +15,6 @@ router.put(
         validarjwtEstuadiante,
         check("id", "El id no tiene que ir vacio").not().isEmpty(),
         check("id").custom(existeEstudianteById),
-        check("nombre", "El nombre del estudiante es obligatorio").not().isEmpty(),
-        check("correo", "El correo no es un correo valido").isEmail(),
-        check("correo").custom(existeEmailEstudiante),
-        check ("grado", "El estudiante necesita un grado").not().isEmpty(),
-        check("grado").custom(esGradoValido),
-        check("password", "Se necestia una contraseña").not().isEmpty(),
         check("password", "Deber ser mayor a 6 caracteres").isLength({min: 6}),
         validarCampos
     ], putEstudiante)

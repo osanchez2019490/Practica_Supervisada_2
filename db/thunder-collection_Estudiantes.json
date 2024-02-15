@@ -1,0 +1,52 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Estudiantes",
+    "dateExported": "2024-02-15T04:23:47.487Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "144b66c7-b590-4b3c-8d60-46b06ea9075e",
+            "colId": "e49bd81e-1805-4d33-a7a7-d53c353b96d4",
+            "containerId": "",
+            "name": "put_estudiante",
+            "url": "http://localhost:3000/api/estudiante/65cd82decb687fe143a2803d",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-02-15T03:59:37.775Z",
+            "modified": "2024-02-15T04:18:31.114Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkODJkZWNiNjg3ZmUxNDNhMjgwM2QiLCJpYXQiOjE3MDc5Njk2MzUsImV4cCI6MTcwNzk3NjgzNX0.wXZnz4XL-Ldax1xXfkjOXYXED5m_buoIy1N8iRCBw5w"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Omar Emiliani Sanchez Mendoza\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1a2854b0-bc2a-4a3f-92d0-28dde37a8b85",
+            "colId": "e49bd81e-1805-4d33-a7a7-d53c353b96d4",
+            "containerId": "",
+            "name": "delete_estudiante",
+            "url": "http://localhost:3000/api/estudiante/65cd9125da10499390ce7a3c",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-02-15T04:20:30.815Z",
+            "modified": "2024-02-15T04:21:47.973Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkOTEyNWRhMTA0OTkzOTBjZTdhM2MiLCJpYXQiOjE3MDc5NzA4NzAsImV4cCI6MTcwNzk3ODA3MH0.6O2AaK_pI5WDCsfsvG7Fyan3wkP9pR2PGcaD0C4AV34"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

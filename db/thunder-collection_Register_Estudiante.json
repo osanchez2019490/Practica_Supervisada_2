@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Register_Estudiante",
+    "dateExported": "2024-02-15T04:23:20.390Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "63cec7e2-01cf-4add-9ce0-7b8c4c6cc8dc",
+            "colId": "81b4eb2e-d964-47be-bade-b5d9f3d29e83",
+            "containerId": "",
+            "name": "post_registerEstudiante",
+            "url": "http://localhost:3000/api/estudianteRegister",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-15T03:13:32.991Z",
+            "modified": "2024-02-15T04:20:53.418Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"omar\",\n  \"correo\": \"XDDD@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"grado\": \"SEXTO\",\n  \"carnet\": \"2019490\",\n  \"jornada\": \"Vespertina\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

@@ -22,7 +22,7 @@ const estudiantePost = async (req, res) =>{
 
 const putEstudiante = async (req, res = response) =>{
     const { id } = req.params;
-    const {_id, password, estado, correo, role,...resto} = req.body;
+    const {_id, password, estado, correo, role, grado, ...resto} = req.body;
     const token = req.header('x-token');
 
     if (!token) {
@@ -41,11 +41,13 @@ const putEstudiante = async (req, res = response) =>{
 
     await Estudiante.findByIdAndUpdate(id, resto, {new: true});
 
+    const estudianteAnterior = req.estudiante;
     const estudianteActualizado = await Estudiante.findByIdAndUpdate(id, resto, { new: true });
 
     res.status(200).json({
         msg: 'Estudiante Actualizado Exitosamente!!!',
-        estudiante: estudianteActualizado
+        estudiante: estudianteActualizado,
+        estudianteAnterior
     });
 }
 

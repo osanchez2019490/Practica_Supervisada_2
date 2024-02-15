@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Register_Profesor",
+    "dateExported": "2024-02-15T04:23:36.388Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ba2de0e3-fe34-4110-a303-0f16ac478edd",
+            "colId": "7dc48696-42c0-4ff7-b00e-914c8b7b23b8",
+            "containerId": "",
+            "name": "post_registerProfesor",
+            "url": "http://localhost:3000/api/profesorRegister",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-15T03:21:37.467Z",
+            "modified": "2024-02-15T03:55:30.008Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": " {\n  \"nombre\":\"Julio\",\n  \"correo\": \"Julio@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"role\": \"TEACHER_ROLE\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
