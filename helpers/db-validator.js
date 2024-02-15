@@ -26,9 +26,9 @@ const esRolValido = async (role = '') => {
 };
 
 const esProfesorValido = async (nombre = '') => {
-    const existeNombre = await Role.findOne({nombre});
-    if(!existeNombre) {
-        throw new Error(`El role ${ nombre } no existe en la base de datos`);
+    const existeProfesor = await Profesor.findOne({nombre});
+    if(!existeProfesor) {
+        throw new Error(`El profesor ${ nombre } no existe en la base de datos`);
     };
 };
 

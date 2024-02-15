@@ -16,3 +16,7 @@ const tieneRolAutorizado = (...roles) => {
         next();
     };
 }
+
+module.exports = {
+    tieneRolAutorizado
+}
