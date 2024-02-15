@@ -17,16 +17,16 @@ const EstudianteSchema = Schema({
         required: [true, 'La contraseña es obligatoria']
     },
 
-    materias: {
-        type: String,
+    materias: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Materia',
         validate: {
-            validator: function(value){
-                return value.length <= 5;
+            validator: function (val) {
+                return val.length <= 3;
             },
-
-            message: 'No se pueden agregar mas de 3 materias'
-        },
-    },
+            message: 'No puedes inscribirte a más de 3 materias.'
+        }
+    }],
 
     grado: {
         type: String,

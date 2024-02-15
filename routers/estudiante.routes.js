@@ -6,7 +6,7 @@ const { validarjwtEstuadiante } = require('../middlewares/validar-jwt');
 
 const {putEstudiante, deleteEstudiante } = require('../controllers/estudiante.controller');
 
-const { esGradoValido, existeEmailEstudiante, existeEstudianteById} = require('../helpers/db-validator');
+const { existeEstudianteById } = require('../helpers/db-validator');
 const router = Router();
 
 router.put(

@@ -25,6 +25,14 @@ const esRolValido = async (role = '') => {
     };
 };
 
+const esProfesorValido = async (nombre = '') => {
+    const existeNombre = await Role.findOne({nombre});
+    if(!existeNombre) {
+        throw new Error(`El role ${ nombre } no existe en la base de datos`);
+    };
+};
+
+
 const existeEmailProfesor = async(correo = '') => {
     const existeEmail = await Profesor.findOne({correo});
     if(existeEmail){
@@ -45,6 +53,7 @@ module.exports = {
     existeEmailEstudiante,
     esRolValido,
     existeEmailProfesor,
-    existeEstudianteById
+    existeEstudianteById,
+    esProfesorValido
 
 }
