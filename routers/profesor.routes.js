@@ -7,7 +7,7 @@ const { tieneRolAutorizado } = require('../middlewares/validar-roles')
 
 const { esGradoValido,  esProfesorValido} = require('../helpers/db-validator');
 
-const {materiaPost} = require('../controllers/materia.controller');
+const {materiaPost, materiasGet} = require('../controllers/materia.controller');
 
 const router = Router();
 
@@ -25,5 +25,10 @@ router.post(
         check("grado").custom(esGradoValido),
         validarCampos
     ],materiaPost)
+
+router.get("/", 
+    [
+        validarjwtProfesor
+    ],materiasGet)
 
 module.exports = router;
