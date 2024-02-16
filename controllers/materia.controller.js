@@ -53,7 +53,42 @@ const materiasGet= async (req, res) => {
         materias
     })
 }
+
+const materiaGetById = async (req, res) => {
+    const {id} = req.params;
+    const token = req.header('x-token');
+
+    if (!token) {
+        return res.status(401).json({
+            msg: 'Token no proporcionado'
+        });
+    }
+
+    const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const profesorId = decoded.uid;
+
+    const profesor = await Profesor.findById(profesorId);
+
+    if (!profesor) {
+        return res.status(404).json({
+            msg: 'Profesor no encontrado'
+        });
+    }
+
+    const materia = await Materia.findOne({ _id: id, profesor: profesor.nombre });
+
+    if(!materia){
+        return res.status(404).json({
+            msg: 'Materia no encontrada'
+        });
+    }
+
+    res.status(200).json({
+        materia
+    })
+}
 module.exports = {
     materiaPost,
-    materiasGet
+    materiasGet,
+    materiaGetById
 }
