@@ -29,7 +29,7 @@ const putEstudiante = async (req, res = response) =>{
         return res.status(401).json({ msg: 'No hay token, autorización denegada' });
     }
 
-    const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
+    const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
 
     if(!decoded || !decoded.uid || decoded.uid !== id){
         return res.status(403).json({ msg: 'No tienes permiso para actualizar este perfil' });

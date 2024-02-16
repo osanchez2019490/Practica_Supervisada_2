@@ -1,19 +1,19 @@
 const { Router } = require('express');
-const { check } =  require('express-validator');
+const { check } = require('express-validator');
 
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarjwtProfesor } = require('../middlewares/validar-jwt');
 const { tieneRolAutorizado } = require('../middlewares/validar-roles')
 
-const { esGradoValido,  esProfesorValido} = require('../helpers/db-validator');
+const { esGradoValido, esProfesorValido } = require('../helpers/db-validator');
 
-const {materiaPost, materiasGet, materiaGetById} = require('../controllers/materia.controller');
+const { materiaPost, materiasGet, materiaGetById, putMateria } = require('../controllers/materia.controller');
 
 const router = Router();
 
 router.post(
     '/',
-    [   
+    [
         validarjwtProfesor,
         tieneRolAutorizado('TEACHER_ROLE'),
         check("nombre", "El nombre de la materia es obligatorio").not().isEmpty(),
@@ -24,18 +24,24 @@ router.post(
         check("grado", "La materia necesita un grado").not().isEmpty(),
         check("grado").custom(esGradoValido),
         validarCampos
-    ],materiaPost)
+    ], materiaPost)
 
-router.get("/", 
+router.get("/",
     [
         validarjwtProfesor,
-        tieneRolAutorizado('TEACHER_ROLE'),
-    ],materiasGet)
+        tieneRolAutorizado('TEACHER_ROLE')
+    ], materiasGet)
 
 router.get("/:id",
     [
         validarjwtProfesor,
-        tieneRolAutorizado('TEACHER_ROLE'),
+        tieneRolAutorizado('TEACHER_ROLE')
     ], materiaGetById)
 
+router.put("/:id",
+    [
+        validarjwtProfesor,
+        tieneRolAutorizado('TEACHER_ROLE'),
+        validarCampos
+    ], putMateria)
 module.exports = router;

@@ -87,8 +87,54 @@ const materiaGetById = async (req, res) => {
         materia
     })
 }
+
+const putMateria = async(req, res = response) => {
+    const { id } = req.params;
+    const {_id, profesor, estado , ...resto} = req.body;
+    const token = req.header('x-token');
+
+    if(!token){
+        return res.status(401).json({
+            msg: 'No hay token'
+        });
+    }
+
+    const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const profesorId = decoded.uid;
+
+    const profesorActual =  await Profesor.findById(profesorId);
+
+    if(!profesorActual){
+        return res.status(404).json({
+            msg: 'Profesor no encontrado'
+        });
+    }
+
+    const materia = await Materia.findById(id);
+
+    if(!materia){
+        return res.status(404).json({
+            msg: 'Materia no encontrada'
+        });
+    }
+
+    if(materia.profesor !== profesorActual.nombre) {
+        return res.status(403).json({
+            msg: 'No tienes permiso para actualizar esta materia'
+        });
+    }
+    
+    const materiaAnterior = req.materia;
+    const materiaActualizada = await Materia.findByIdAndUpdate(id, resto, {new: true});
+
+    res.status(200).json({
+        materia: materiaActualizada,
+        materiaAnterior
+    })
+} 
 module.exports = {
     materiaPost,
     materiasGet,
-    materiaGetById
+    materiaGetById,
+    putMateria
 }
