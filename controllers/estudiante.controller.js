@@ -1,8 +1,69 @@
 const Estudiante = require('../models/estudiante');
+const Materia = require('../models/materia');
 const {response} = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
+const estudiantePostMateria = async (req, res) => {
+    const { materia } = req.body;
+    const token = req.header('x-token');
+
+    if(!token) {
+        return res.status(401).json({
+            msg: 'No hay token'
+        });
+    }
+
+    const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    
+    const estudiante = await Estudiante.findById(decoded.uid);
+    if (!estudiante) {
+        return res.status(404).json({
+            msg: 'Estudiante no encontrado'
+        });
+    }
+
+    if (estudiante.materias.includes(materia)){
+        return res.status(400).json({
+            msg: 'El estudiante ya tiene asignada esta materia'
+        });
+    }
+
+    const materiaEncontrada = await Materia.findOne({nombre: materia});
+
+    if (!materiaEncontrada){
+        return res.status(404).json({
+            msg: 'Materia no encontrada'
+        });
+    }
+
+    if (!materiaEncontrada.estado){
+        return res.status(400).json({
+            msg: 'La materia no esta disponible'
+        });
+    }
+
+    if (!estudiante.grado.includes(materiaEncontrada.grado)) {
+        return res.status(404).json({
+            msg: 'El estudian no puede incribirse a cursos que no sean de su grado'
+        });
+    }
+
+    if (estudiante.materias.length >= 3){
+        return res.status(400).json({
+            msg: 'Ya tienes asignado 3 materias'
+        });
+    }
+
+    estudiante.materias.push(materiaEncontrada._id);
+    await estudiante.save();
+
+    res.status(200).json({
+        msg:'Materia asignada correctamente'
+    });
+
+}
 
 const estudiantePost = async (req, res) =>{
     const {materias, role, password,...resto} = req.body;
@@ -80,6 +141,7 @@ const deleteEstudiante = async (req, res = response) =>{
 module.exports = {
     estudiantePost,
     putEstudiante,
-    deleteEstudiante
+    deleteEstudiante,
+    estudiantePostMateria
 }
 

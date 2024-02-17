@@ -54,7 +54,7 @@ const validarjwtProfesor = async (req = request, res = response, next) =>{
 
         if(!profesor) {
             return res.status(401).json({
-                msg: "Estudiante no existe en la base de datos"
+                msg: "Profesor no existe en la base de datos"
             });
         }
 

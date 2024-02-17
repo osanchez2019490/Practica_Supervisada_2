@@ -4,10 +4,18 @@ const { check } =  require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarjwtEstuadiante } = require('../middlewares/validar-jwt');
 
-const {putEstudiante, deleteEstudiante } = require('../controllers/estudiante.controller');
+const {putEstudiante, deleteEstudiante, estudiantePostMateria } = require('../controllers/estudiante.controller');
 
 const { existeEstudianteById } = require('../helpers/db-validator');
 const router = Router();
+
+
+router.post("/",
+    [
+        validarjwtEstuadiante,
+        check("materia", "Debes poner una materia para asignarte").not().isEmpty(),
+        validarCampos
+    ], estudiantePostMateria)
 
 router.put(
     "/:id",
@@ -16,6 +24,7 @@ router.put(
         check("id", "El id no tiene que ir vacio").not().isEmpty(),
         check("id").custom(existeEstudianteById),
         check("password", "Deber ser mayor a 6 caracteres").isLength({min: 6}),
+        check ("grado", "No puedes cambiar tu grado").isEmpty(),
         validarCampos
     ], putEstudiante)
 

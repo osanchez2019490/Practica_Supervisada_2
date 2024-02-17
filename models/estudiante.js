@@ -20,12 +20,6 @@ const EstudianteSchema = Schema({
     materias: [{
         type: Schema.Types.ObjectId,
         ref: 'Materia',
-        validate: {
-            validator: function (val) {
-                return val.length <= 3;
-            },
-            message: 'No puedes inscribirte a más de 3 materias.'
-        }
     }],
 
     grado: {
