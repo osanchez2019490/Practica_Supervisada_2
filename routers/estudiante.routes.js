@@ -4,12 +4,15 @@ const { check } =  require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarjwtEstuadiante } = require('../middlewares/validar-jwt');
 
-const {putEstudiante, deleteEstudiante, estudiantePostMateria } = require('../controllers/estudiante.controller');
+const {putEstudiante, deleteEstudiante, estudiantePostMateria, getMateriasDeEstudiante } = require('../controllers/estudiante.controller');
 
 const { existeEstudianteById } = require('../helpers/db-validator');
 const router = Router();
 
-
+router.get("/",
+    [
+        validarjwtEstuadiante
+    ],getMateriasDeEstudiante )
 router.post("/",
     [
         validarjwtEstuadiante,

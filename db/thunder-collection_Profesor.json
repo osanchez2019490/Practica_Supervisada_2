@@ -1,0 +1,126 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Profesor",
+    "dateExported": "2024-02-17T20:04:57.908Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e0ee050b-be99-4abe-b16e-72d87555b4cd",
+            "colId": "b64f83ee-e2ba-441f-af93-65472c387034",
+            "containerId": "",
+            "name": "post_materia",
+            "url": "http://localhost:3000/api/profesor",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-15T05:23:46.810Z",
+            "modified": "2024-02-17T04:36:18.483Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkOGIzMWNiNjg3ZmUxNDNhMjgwNDEiLCJpYXQiOjE3MDgxNDM5OTUsImV4cCI6MTcwODE1MTE5NX0.zIjAQfkyoIS3sdtGgT_AZ1HNxdtEQ2bqH1OSfKTateY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Musica\",\n  \"duracion\": \"2 bimestres\",\n  \"descripcion\": \"Pues mate noma XD\",\n  \"profesor\": \"Julio\",\n  \"grado\": \"SEXTO\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8c812bed-e711-4c7d-ba98-1021d6b58367",
+            "colId": "b64f83ee-e2ba-441f-af93-65472c387034",
+            "containerId": "",
+            "name": "get_materia",
+            "url": "http://localhost:3000/api/profesor?limite=2",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-16T15:27:27.767Z",
+            "modified": "2024-02-17T04:26:48.893Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkOGIzMWNiNjg3ZmUxNDNhMjgwNDEiLCJpYXQiOjE3MDgxNDM5OTUsImV4cCI6MTcwODE1MTE5NX0.zIjAQfkyoIS3sdtGgT_AZ1HNxdtEQ2bqH1OSfKTateY"
+                }
+            ],
+            "params": [
+                {
+                    "name": "desde",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "limite",
+                    "value": "2",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "76f44a10-6153-468a-aecd-61812041f674",
+            "colId": "b64f83ee-e2ba-441f-af93-65472c387034",
+            "containerId": "",
+            "name": "get_materiaById",
+            "url": "http://localhost:3000/api/profesor/65d0249a7e96e56f54163074",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-16T16:04:16.309Z",
+            "modified": "2024-02-17T03:18:25.696Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQwMjU0NDdlOTZlNTZmNTQxNjMwODkiLCJpYXQiOjE3MDgxMzk4NjAsImV4cCI6MTcwODE0NzA2MH0.UoowJEr_eIvRPQuzGT7CV73JRxxsygZ4NRkPmZO3LRE"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b7e6369c-d210-4692-90fb-bbb1e7ceae69",
+            "colId": "b64f83ee-e2ba-441f-af93-65472c387034",
+            "containerId": "",
+            "name": "put_materia",
+            "url": "http://localhost:3000/api/profesor/65cda4e20aae21106a996cc4",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-16T16:44:45.993Z",
+            "modified": "2024-02-17T04:27:28.177Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkOGIzMWNiNjg3ZmUxNDNhMjgwNDEiLCJpYXQiOjE3MDgxNDM5OTUsImV4cCI6MTcwODE1MTE5NX0.zIjAQfkyoIS3sdtGgT_AZ1HNxdtEQ2bqH1OSfKTateY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Fisica\",\n  \"duracion\": \"1 Bimestre\",\n  \"descripciond\": \"Una mate mas rapida\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0cb70cd6-8ee6-4125-b716-9908c846cc5a",
+            "colId": "b64f83ee-e2ba-441f-af93-65472c387034",
+            "containerId": "",
+            "name": "delete_materia",
+            "url": "http://localhost:3000/api/profesor/65cf7f1175cc4157265aeb72",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-17T03:03:57.252Z",
+            "modified": "2024-02-17T03:11:22.390Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkOGIzMWNiNjg3ZmUxNDNhMjgwNDEiLCJpYXQiOjE3MDgxMzk0NTYsImV4cCI6MTcwODE0NjY1Nn0.wQrHuP42AY27ToXOdJLyJTk_EjZFSUG2Hj2H7haZJKA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

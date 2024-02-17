@@ -136,12 +136,59 @@ const deleteEstudiante = async (req, res = response) =>{
     });
 }
 
+const getMateriasDeEstudiante = async (req, res) => {
+    const token = req.header('x-token');
 
+    if(!token){
+        return res.status(401).json({
+            msg: 'No hay token'
+        })
+    }
+
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+
+    const estudiante = await Estudiante.findById(uid);
+
+    if(!estudiante){
+        return res.status(404).json({
+            msg: 'Estudiante no encontrado'
+        })
+    }
+
+    let materias = await Materia.find({
+        _id: { $in: estudiante.materias}
+    })
+
+    if(materias.length == 0){
+        return res.status(200).json({
+            msg: 'El estudiante no tiene ninguna clase'
+        })
+    }
+
+    materias = materias.filter(materia => materia.estado);
+
+    const materiasConInfo = [];
+
+    for (const materia of materias){
+        const infoMateria = {
+                nombre: materia.nombre,
+                descripcion: materia.descripcion,
+                grado: materia.grado,
+                profesor: materia.profesor
+        };
+        materiasConInfo.push(infoMateria);
+    }
+
+    res.status(200).json({
+        materias: materiasConInfo
+    });
+}
 
 module.exports = {
     estudiantePost,
     putEstudiante,
     deleteEstudiante,
-    estudiantePostMateria
+    estudiantePostMateria,
+    getMateriasDeEstudiante
 }
 
