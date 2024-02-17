@@ -5,9 +5,9 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const { validarjwtProfesor } = require('../middlewares/validar-jwt');
 const { tieneRolAutorizado } = require('../middlewares/validar-roles')
 
-const { esGradoValido, esProfesorValido } = require('../helpers/db-validator');
+const { esGradoValido, esProfesorValido, existeProfesorByid} = require('../helpers/db-validator');
 
-const { materiaPost, materiasGet, materiaGetById, putMateria } = require('../controllers/materia.controller');
+const { materiaPost, materiasGet, materiaGetById, putMateria, deleteMateria } = require('../controllers/materia.controller');
 
 const router = Router();
 
@@ -35,13 +35,26 @@ router.get("/",
 router.get("/:id",
     [
         validarjwtProfesor,
+        check('id', 'No es un id valido').isMongoId(),
+        check('id').custom(existeProfesorByid),
         tieneRolAutorizado('TEACHER_ROLE')
     ], materiaGetById)
 
 router.put("/:id",
     [
         validarjwtProfesor,
+        check('id', 'No es un id valido').isMongoId(),
+        check('id').custom(existeProfesorByid),
         tieneRolAutorizado('TEACHER_ROLE'),
         validarCampos
     ], putMateria)
+
+router.delete("/:id",
+    [
+        validarjwtProfesor,
+        check('id', 'No es un id valido').isMongoId(),
+        check('id').custom(existeProfesorByid),
+        tieneRolAutorizado('TEACHER_ROLE'),
+        validarCampos
+    ], deleteMateria)
 module.exports = router;
