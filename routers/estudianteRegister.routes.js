@@ -5,7 +5,7 @@ const { validarCampos } = require('../middlewares/validar-campos');
 
 const { estudiantePost } = require('../controllers/estudiante.controller');
 
-const { esGradoValido, existeEmailEstudiante} = require('../helpers/db-validator');
+const { esGradoValido, existeEmailEstudiante, existeEmail} = require('../helpers/db-validator');
 
 const router = Router();
 
@@ -14,7 +14,7 @@ router.post(
     [
         check("nombre", "El nombre del estudiante es obligatorio").not().isEmpty(),
         check("correo", "El correo no es un correo valido").isEmail(),
-        check("correo").custom(existeEmailEstudiante),
+        check("correo").custom(existeEmail),
         check ("grado", "El estudiante necesita un grado").not().isEmpty(),
         check("grado").custom(esGradoValido),
         check("password", "Se necestia una contraseña").not().isEmpty(),
