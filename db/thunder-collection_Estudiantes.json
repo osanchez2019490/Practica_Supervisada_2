@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Estudiantes",
-    "dateExported": "2024-02-15T04:23:47.487Z",
+    "dateExported": "2024-02-18T15:13:45.453Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -10,21 +10,21 @@
             "colId": "e49bd81e-1805-4d33-a7a7-d53c353b96d4",
             "containerId": "",
             "name": "put_estudiante",
-            "url": "http://localhost:3000/api/estudiante/65cd82decb687fe143a2803d",
+            "url": "http://localhost:3000/api/estudiante/65d025447e96e56f54163089",
             "method": "PUT",
             "sortNum": 20000,
             "created": "2024-02-15T03:59:37.775Z",
-            "modified": "2024-02-15T04:18:31.114Z",
+            "modified": "2024-02-17T03:22:41.023Z",
             "headers": [
                 {
                     "name": "x-token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkODJkZWNiNjg3ZmUxNDNhMjgwM2QiLCJpYXQiOjE3MDc5Njk2MzUsImV4cCI6MTcwNzk3NjgzNX0.wXZnz4XL-Ldax1xXfkjOXYXED5m_buoIy1N8iRCBw5w"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQwMjU0NDdlOTZlNTZmNTQxNjMwODkiLCJpYXQiOjE3MDgxNDAxMzgsImV4cCI6MTcwODE0NzMzOH0.tyEZpDFSQsyqt-O7aFx42ixhGTKlTIIqFpnXJC1PB2k"
                 }
             ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Omar Emiliani Sanchez Mendoza\",\n  \"password\": \"123456\"\n}",
+                "raw": "{\n  \"nombre\": \"Omar Emiliani Sanchez Mendoza\",\n  \"password\": \"123456\",\n  \"grado\": \"XD\"\n}",
                 "form": []
             },
             "tests": []
@@ -43,6 +43,49 @@
                 {
                     "name": "x-token",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNkOTEyNWRhMTA0OTkzOTBjZTdhM2MiLCJpYXQiOjE3MDc5NzA4NzAsImV4cCI6MTcwNzk3ODA3MH0.6O2AaK_pI5WDCsfsvG7Fyan3wkP9pR2PGcaD0C4AV34"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0d440c65-87af-48a4-8db9-6b4eed4dcc7e",
+            "colId": "e49bd81e-1805-4d33-a7a7-d53c353b96d4",
+            "containerId": "",
+            "name": "post_asignacionMateria",
+            "url": "http://localhost:3000/api/estudiante",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-02-17T04:25:01.906Z",
+            "modified": "2024-02-17T22:18:04.252Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQxMzAzZjIxZTFhMmQwZTNkYjM5ODAiLCJpYXQiOjE3MDgyMDgyMDIsImV4cCI6MTcwODIxNTQwMn0.L2WoLEmmitNFBZqlqeXbr2aHwCOOPN-OhVX_CF72OLk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"materia\": \"Educancion\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "987e2bbf-9b68-4312-a605-555c07f6c254",
+            "colId": "e49bd81e-1805-4d33-a7a7-d53c353b96d4",
+            "containerId": "",
+            "name": "get_asignaturas",
+            "url": "http://localhost:3000/api/estudiante",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-02-17T21:41:02.345Z",
+            "modified": "2024-02-17T22:20:57.364Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQwMjU0NDdlOTZlNTZmNTQxNjMwODkiLCJpYXQiOjE3MDgyMDg0NTAsImV4cCI6MTcwODIxNTY1MH0.PSXhWmPvK0zSM_Uk9VUgd_lnyBEeJEmiXgdQ_rMugNM"
                 }
             ],
             "params": [],
