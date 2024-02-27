@@ -5,7 +5,7 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const { validarjwtProfesor } = require('../middlewares/validar-jwt');
 const { tieneRolAutorizado } = require('../middlewares/validar-roles')
 
-const { esGradoValido, esProfesorValido, existeProfesorByid} = require('../helpers/db-validator');
+const { esGradoValido, esProfesorValido, existeProfesorByid, materiaExistente} = require('../helpers/db-validator');
 
 const { materiaPost, materiasGet, materiaGetById, putMateria, deleteMateria } = require('../controllers/materia.controller');
 
@@ -17,6 +17,7 @@ router.post(
         validarjwtProfesor,
         tieneRolAutorizado('TEACHER_ROLE'),
         check("nombre", "El nombre de la materia es obligatorio").not().isEmpty(),
+        check("nombre").custom(materiaExistente),    
         check("descripcion", "La materia necesita una descripcion").not().isEmpty(),
         check("duracion", "La materia necesita una duracion").not().isEmpty(),
         check("profesor", "La materia necesita un profesor").not().isEmpty(),

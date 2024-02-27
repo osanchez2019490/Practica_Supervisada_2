@@ -156,7 +156,8 @@ const getMateriasDeEstudiante = async (req, res) => {
     }
 
     let materias = await Materia.find({
-        _id: { $in: estudiante.materias}
+        _id: { $in: estudiante.materias},
+        estado: true
     })
 
     if(materias.length == 0){
@@ -165,8 +166,12 @@ const getMateriasDeEstudiante = async (req, res) => {
         })
     }
 
-    materias = materias.filter(materia => materia.estado);
+    const materiasActivasIds = materias.map(materia => materia._id);
 
+    estudiante.materias = materiasActivasIds;
+    
+    await estudiante.save();
+    
     const materiasConInfo = [];
 
     for (const materia of materias){

@@ -2,6 +2,8 @@ const Grado = require('../models/grado');
 const Role = require('../models/role');
 const Estudiante = require ('../models/estudiante');
 const Profesor = require('../models/profesor');
+const Materia = require('../models/materia');
+
 
 const esGradoValido = async (grado = '') => {
     const existeGrado = await Grado.findOne({grado});
@@ -18,6 +20,13 @@ const esRolValido = async (role = '') => {
         throw new Error(`El role ${ role } no existe en la base de datos`);
     };
 };
+
+const materiaExistente = async (nombre = '') => {
+    const existeMateria = await Materia.findOne({nombre});
+    if (existeMateria) {
+        throw new Error(`La materia ${ nombre } ya existe en la base datos`);
+    }
+}
 
 const esProfesorValido = async (nombre = '') => {
     const existeProfesor = await Profesor.findOne({nombre});
@@ -56,6 +65,7 @@ module.exports = {
     existeEmail,
     existeEstudianteById,
     esProfesorValido,
-    existeProfesorByid
+    existeProfesorByid,
+    materiaExistente
 
 }
